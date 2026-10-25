@@ -1,4 +1,5 @@
 import wollok.game.*
+import elementos.*
 
 object salvito {
     var property position = game.at(5, 2)
@@ -20,4 +21,14 @@ object salvito {
         oxigeno = 100.min(oxigeno + 10)
     }
     method estaVivo() = oxigeno > 0
+    method asimilarAmbiente() {
+        if (self.position().y() >= 4) {
+            ambienteCalle.afectarA(self)
+        } else {
+            self.recuperarAire()
+        }
+    if (!self.estaVivo()) {
+        game.say(self, "No puedo... respirar...")
+    }
+}
 }

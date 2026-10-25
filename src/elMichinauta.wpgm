@@ -35,17 +35,7 @@ object logicaJuego {
 
         // Configuración del SUBE (a la calle) y BAJA (al subte).
         game.onTick(1000, "cicloDeOxigeno", {
-            // Si Y es mayor o igual a 4, está en la calle.
-            if (salvito.position().y() >= 4) {
-                ambienteCalle.afectarA(salvito)
-            } else {
-                // Si Y es menor a 4, está en el andén seguro (recarga pasiva).
-                salvito.recuperarAire()
-            }
-            // Validación de GAME OVER si Salvito se quedó sin aire.
-            if (!salvito.estaVivo()) {
-                game.say(salvito, "No puedo... respirar...")
-            }
+            salvito.asimilarAmbiente()
         })
     }
 }

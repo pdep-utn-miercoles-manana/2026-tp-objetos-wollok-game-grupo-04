@@ -4,8 +4,8 @@ import gatoSalvito.*
 import niveles.*
 
 object gestorDeNivel {
-    var property nivelesDeJuego = [nivelUno, nivelDos, nivelTres] 
-    var property indice = 0 
+    const nivelesDeJuego = [nivelUno, nivelDos, nivelTres] 
+    var indice = 0 
     var piezasRecolectadas = 0
 
     method nivelActual() = nivelesDeJuego.get(indice) 

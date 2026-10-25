@@ -5,8 +5,8 @@ class NieveToxica {
     var property position
     var property image = "Nieve.png"
 
-    method danoDeOxigeno() = 30
-    method danoDeVelocidad() = 20
+    method danioDeOxigeno() = 30
+    method danioDeVelocidad() = 20
     
     method afectarA(unMichinauta) {
         unMichinauta.sufrirImpacto(self)
