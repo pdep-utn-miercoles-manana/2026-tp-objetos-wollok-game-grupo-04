@@ -11,3 +11,8 @@ object medidorOxigeno {
     method text() = "OXÍGENO: " + salvito.oxigeno().toString() + "%" 
     method textColor() = "00FF00FF" 
 }
+
+object pantallaDeTitulo {
+    method position() = game.origin() 
+    method image() = "titulo.png"
+}

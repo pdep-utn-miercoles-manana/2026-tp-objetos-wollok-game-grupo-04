@@ -5,7 +5,15 @@ import visualesPantalla.*
 import gestores.*
 
 object logicaJuego {
-    method iniciar() {
+    method arrancar() {
+        game.addVisual(pantallaDeTitulo)
+        // Esperamos el input del usuario para salir del menú.
+        keyboard.enter().onPressDo({
+            game.removeVisual(pantallaDeTitulo)
+            self.iniciarPartida()
+        })
+    }
+    method iniciarPartida() {
         // Barra de oxígeno.
         game.addVisual(iconoPecera)
         game.addVisual(medidorOxigeno)
@@ -36,7 +44,6 @@ object logicaJuego {
         // Configuración del SUBE (a la calle) y BAJA (al subte).
         game.onTick(1000, "cicloDeOxigeno", {
             if (salvito.position().y() >= 4) {
-                // Si está en la calle, le enviamos explícitamente el daño del ambiente.
                 salvito.sufrirImpacto(ambienteCalle)
             } else {
                 // Si está en el subte, le ordenamos que recargue.
@@ -47,4 +54,15 @@ object logicaJuego {
             }
         })
     }
+}
+
+program michinautaGame {
+    game.title("El Michinauta")
+    game.width(10)
+    game.height(10)
+    game.cellSize(50)
+    
+    logicaJuego.arrancar()
+    
+    game.start()
 }
