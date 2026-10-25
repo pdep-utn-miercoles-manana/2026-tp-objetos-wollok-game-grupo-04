@@ -51,15 +51,9 @@ object gestorClima {
         })
         // Caída de los copos.
         game.onTick(tiempoCaida, "caidaDeNieve", {
-            coposEnPantalla.forEach({ copo =>
-                const nuevaPos = copo.position().down(1)       
-                if (nuevaPos.y() < 4) {
-                    game.removeVisual(copo)
-                    coposEnPantalla.remove(copo)
-                } else {
-                    copo.position(nuevaPos)
-                }
-            })
+            const coposAEliminar = coposEnPantalla.filter({ copo => copo.position().down(1).y() < 4 })
+            coposAEliminar.forEach({ copo => game.removeVisual(copo) coposEnPantalla.remove(copo)})
+            coposEnPantalla.forEach({ copo => copo.position(copo.position().down(1))})
         })
     }
     method cambiarDificultad(nuevoTiempoGen, nuevoTiempoCaida) {

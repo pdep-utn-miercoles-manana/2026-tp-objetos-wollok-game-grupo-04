@@ -31,11 +31,20 @@ object logicaJuego {
         })
 
         // Colisión del gato Salvito con cualquier elemento.
-        game.onCollideDo(salvito, { elemento => elemento.afectar(salvito) })
+        game.onCollideDo(salvito, { elemento => elemento.afectarA(salvito) })
 
         // Configuración del SUBE (a la calle) y BAJA (al subte).
         game.onTick(1000, "cicloDeOxigeno", {
-            salvito.asimilarAmbiente()
+            if (salvito.position().y() >= 4) {
+                // Si está en la calle, le enviamos explícitamente el daño del ambiente.
+                salvito.sufrirImpacto(ambienteCalle)
+            } else {
+                // Si está en el subte, le ordenamos que recargue.
+                salvito.recuperarAire()
+            }
+            if (!salvito.estaVivo()) {
+                game.say(salvito, "No puedo... respirar...")
+            }
         })
     }
 }
