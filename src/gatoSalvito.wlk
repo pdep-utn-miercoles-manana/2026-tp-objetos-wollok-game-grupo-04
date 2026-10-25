@@ -13,14 +13,11 @@ object salvito {
         oxigeno = 0.max(oxigeno - unaAmenaza.danioDeOxigeno())
         velocidad = 0.max(velocidad - unaAmenaza.danioDeVelocidad())
     }
-
      method recuperarVelocidad() {
         velocidad = 100.min(velocidad + 30)
     }
-
     method recuperarAire() {
         oxigeno = 100.min(oxigeno + 10)
     }
-
     method estaVivo() = oxigeno > 0
 }

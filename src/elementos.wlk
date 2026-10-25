@@ -1,4 +1,5 @@
 import wollok.game.*
+import gestores.*
 
 class NieveToxica {
     var property position
@@ -23,6 +24,18 @@ class LataAtun {
     }
 }
 
+class PiezaDeLore {
+    var property position
+    var property image 
+    var property nombreDeLaPieza
+
+    method afectarA(unMichinauta) {
+        // El gestor de nivel suma 1 al progreso.
+        gestorDeNivel.recolectarPieza()
+        game.say(unMichinauta, "Encontré: ¡" + nombreDeLaPieza + "! :O")
+        game.removeVisual(self)
+    }
+}
 // Representa la calle por la que cae nieve tóxica.
 object ambienteCalle {
     method danioDeOxigeno() = 5

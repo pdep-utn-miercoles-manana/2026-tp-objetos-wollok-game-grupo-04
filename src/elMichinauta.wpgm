@@ -1,9 +1,35 @@
 import wollok.game.*
 import gatoSalvito.*
 import elementos.*
+import visualesPantalla.*
+import gestores.*
 
 object logicaJuego {
     method iniciar() {
+        // Barra de oxígeno.
+        game.addVisual(iconoPecera)
+        game.addVisual(medidorOxigeno)
+
+        gestorDeNivel.iniciarJuego()
+
+        // Controles del gato y cambio de modelo visual.
+        keyboard.up().onPressDo({
+            salvito.image("gato_espalda.png") 
+            salvito.position(salvito.position().up(1)) 
+        })
+        keyboard.down().onPressDo({
+            salvito.image("gato_frente.png") 
+            salvito.position(salvito.position().down(1)) 
+        })
+        keyboard.left().onPressDo({
+            salvito.image("gato_izquierdo.png") 
+            salvito.position(salvito.position().left(1)) 
+        })
+        keyboard.right().onPressDo({
+            salvito.image("gato_derecho.png") 
+            salvito.position(salvito.position().right(1)) 
+        })
+
         // Colisión del gato Salvito con cualquier elemento.
         game.onCollideDo(salvito, { elemento => elemento.afectar(salvito) })
 
