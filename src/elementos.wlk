@@ -1,42 +1,64 @@
 import wollok.game.*
 import gestores.*
 
-class NieveToxica {
+class ElementoDeSuperficie {
     var property position
-    var property image = "Nieve.png"
+
+    method image()
+
+    method afectarA(unMichinauta) {
+        self.aplicarEfectoA(unMichinauta)
+        self.desaparecer()
+    }
+
+    method aplicarEfectoA(unMichinauta)
+
+    method desaparecer() {
+        game.removeVisual(self)
+    }
+}
+
+class NieveToxica inherits ElementoDeSuperficie {
+    override method image() = "Nieve.png"
 
     method danioDeOxigeno() = 30
     method danioDeVelocidad() = 20
     
-    method afectarA(unMichinauta) {
+    override method aplicarEfectoA(unMichinauta) {
         unMichinauta.sufrirImpacto(self)
-        game.removeVisual(self)
     }
+
+    override method desaparecer() {
+        gestorClima.eliminarCopo(self)
+    }
+
+    method caer() {
+        position = position.down(1)
+    }
+
+    method llegoAlSubte() = position.down(1).y() < 4
 }
 
-class LataAtun {
-    var property position
-    var property image = "Lata.png"
+class LataAtun inherits ElementoDeSuperficie {
+    override method image() = "Lata.png"
 
-    method afectarA(unMichinauta) {
+    override method aplicarEfectoA(unMichinauta) {
         unMichinauta.recuperarVelocidad()
-        game.removeVisual(self)
     }
 }
 
-class PiezaDeLore {
-    var property position
-    var property image 
-    var property nombreDeLaPieza
+class PiezaDeLore inherits ElementoDeSuperficie {
+    const image
+    const nombreDeLaPieza
 
-    method afectarA(unMichinauta) {
-        // El gestor de nivel suma 1 al progreso.
+    override method image() = image
+
+    override method aplicarEfectoA(unMichinauta) {
         gestorDeNivel.recolectarPieza()
         game.say(unMichinauta, "Encontré: ¡" + nombreDeLaPieza + "! :O")
-        game.removeVisual(self)
     }
 }
-// Representa la calle por la que cae nieve tóxica.
+
 object ambienteCalle {
     method danioDeOxigeno() = 5
     method danioDeVelocidad() = 0

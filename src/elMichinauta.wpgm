@@ -7,51 +7,31 @@ import gestores.*
 object logicaJuego {
     method arrancar() {
         game.addVisual(pantallaDeTitulo)
-        // Esperamos el input del usuario para salir del menú.
         keyboard.enter().onPressDo({
             game.removeVisual(pantallaDeTitulo)
             self.iniciarPartida()
         })
     }
+
     method iniciarPartida() {
-        // Barra de oxígeno.
         game.addVisual(iconoPecera)
         game.addVisual(medidorOxigeno)
+        game.addVisual(salvito)
 
         gestorDeNivel.iniciarJuego()
 
-        // Controles del gato y cambio de modelo visual.
-        keyboard.up().onPressDo({
-            salvito.image("gato_espalda.png") 
-            salvito.position(salvito.position().up(1)) 
-        })
-        keyboard.down().onPressDo({
-            salvito.image("gato_frente.png") 
-            salvito.position(salvito.position().down(1)) 
-        })
-        keyboard.left().onPressDo({
-            salvito.image("gato_izquierdo.png") 
-            salvito.position(salvito.position().left(1)) 
-        })
-        keyboard.right().onPressDo({
-            salvito.image("gato_derecho.png") 
-            salvito.position(salvito.position().right(1)) 
-        })
+        // Delegamos el movimiento y cambio de sprite en Salvito.
+        keyboard.up().onPressDo({ salvito.moverArriba() })
+        keyboard.down().onPressDo({ salvito.moverAbajo() })
+        keyboard.left().onPressDo({ salvito.moverIzquierda() })
+        keyboard.right().onPressDo({ salvito.moverDerecha() })
 
-        // Colisión del gato Salvito con cualquier elemento.
+        // Polimorfismo en colisiones con cualquier elemento del tablero.
         game.onCollideDo(salvito, { elemento => elemento.afectarA(salvito) })
 
-        // Configuración del SUBE (a la calle) y BAJA (al subte).
+        // Delegación total del ciclo de oxígeno en Salvito.
         game.onTick(1000, "cicloDeOxigeno", {
-            if (salvito.position().y() >= 4) {
-                salvito.sufrirImpacto(ambienteCalle)
-            } else {
-                // Si está en el subte, le ordenamos que recargue.
-                salvito.recuperarAire()
-            }
-            if (!salvito.estaVivo()) {
-                game.say(salvito, "No puedo... respirar...")
-            }
+            salvito.asimilarAmbiente()
         })
     }
 }

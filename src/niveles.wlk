@@ -3,10 +3,10 @@ import gatoSalvito.*
 import gestores.*
 
 class Nivel {
-    const property imagenFondo 
-    const property velGeneracion
-    const property velCaida
-    const property mensajeInicial
+    const imagenFondo 
+    const velGeneracion
+    const velCaida
+    const mensajeInicial
 
     method cargarNivel() {
         game.boardGround(imagenFondo) 

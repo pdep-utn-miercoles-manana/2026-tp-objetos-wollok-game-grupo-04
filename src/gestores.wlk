@@ -9,26 +9,36 @@ object gestorDeNivel {
     var piezasRecolectadas = 0
 
     method nivelActual() = nivelesDeJuego.get(indice) 
+
     method iniciarJuego() {
         self.nivelActual().cargarNivel()
     }
+
     method recolectarPieza() {
         piezasRecolectadas += 1
-        if (piezasRecolectadas == 3) {
+        if (self.completoPiezasDelNivel()) {
             self.pasarASiguienteNivel()
         }
     }
+
+    method completoPiezasDelNivel() = piezasRecolectadas == 2
+
     method pasarASiguienteNivel() {
         piezasRecolectadas = 0
-        indice = indice + 1
-        if (indice < nivelesDeJuego.size()) { 
+        indice += 1
+        if (self.hayMasNiveles()) { 
             self.nivelActual().cargarNivel()
         } else {
-            // BONUS TRACK.
-            game.boardGround("refugio.png")
-            gestorClima.frenarNevada()
-            game.say(salvito, "¡Llegué al refugio! Creo que escucho humanos hablando...")
+            self.ganarJuego()
         }
+    }
+
+    method hayMasNiveles() = indice < nivelesDeJuego.size()
+
+    method ganarJuego() {
+        game.boardGround("refugio.png")
+        gestorClima.frenarNevada()
+        game.say(salvito, "¡Llegué al refugio! Creo que escucho humanos hablando...")
     }
 }
 
@@ -40,22 +50,37 @@ object gestorClima {
     method iniciarNevada() {
         self.arrancarTicks()
     }
+
     method arrancarTicks() {
-        // Generar copos de nieve aleatoriamente.
         game.onTick(tiempoGeneracion, "generarNieve", {
-            const xAleatorio = 0.randomUpTo(game.width()).truncate(0)
-            const yTecho = game.height() - 1
-            const nuevoCopo = new NieveToxica(position = game.at(xAleatorio, yTecho)) 
-            game.addVisual(nuevoCopo)
-            coposEnPantalla.add(nuevoCopo)
+            self.generarCopo()
         })
-        // Caída de los copos.
         game.onTick(tiempoCaida, "caidaDeNieve", {
-            const coposAEliminar = coposEnPantalla.filter({ copo => copo.position().down(1).y() < 4 })
-            coposAEliminar.forEach({ copo => game.removeVisual(copo) coposEnPantalla.remove(copo)})
-            coposEnPantalla.forEach({ copo => copo.position(copo.position().down(1))})
+            self.actualizarCaidaDeCopos()
         })
     }
+
+    method generarCopo() {
+        const xAleatorio = 0.randomUpTo(game.width()).truncate(0)
+        const yTecho = game.height() - 1
+        const nuevoCopo = new NieveToxica(position = game.at(xAleatorio, yTecho)) 
+        game.addVisual(nuevoCopo)
+        coposEnPantalla.add(nuevoCopo)
+    }
+
+    method actualizarCaidaDeCopos() {
+        const coposAEliminar = coposEnPantalla.filter({ copo => copo.llegoAlSubte() })
+        coposAEliminar.forEach({ copo => self.eliminarCopo(copo) })
+        coposEnPantalla.forEach({ copo => copo.caer() })
+    }
+
+    method eliminarCopo(unCopo) {
+        if (game.hasVisual(unCopo)) {
+            game.removeVisual(unCopo)
+        }
+        coposEnPantalla.remove(unCopo)
+    }
+
     method cambiarDificultad(nuevoTiempoGen, nuevoTiempoCaida) {
         self.frenarNevada()
         tiempoGeneracion = nuevoTiempoGen
