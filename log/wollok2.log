@@ -346,3 +346,8 @@
 {"level":"info","message":"⌛ Validating src/elMichinauta.wpgm","timeElapsed":118,"timestamp":"2026-10-26T14:59:50.259Z"}
 {"level":"info","message":"🚀 Program executed \u001b[3m\u001b[34msrc.elMichinauta.michinautaGame\u001b[39m\u001b[23m on \u001b[3m\u001b[34mc:\\Users\\Victoria\\Documents\\Universidad\\PdP\\2026-tp-objetos-wollok-game-grupo-04\u001b[39m\u001b[23m","ok":true,"timeElapsed":536,"timestamp":"2026-10-26T15:00:54.835Z"}
 {"exitCode":"SIGHUP","level":"info","message":"👾 Game executed src.elMichinauta.michinautaGame on c:\\Users\\Victoria\\Documents\\Universidad\\PdP\\2026-tp-objetos-wollok-game-grupo-04","timeElapsed":34600,"timestamp":"2026-10-26T15:01:28.898Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":151,"timestamp":"2026-10-26T15:26:34.763Z"}
+{"level":"info","message":"⌛ Validating src/elementos.wlk","timeElapsed":145,"timestamp":"2026-10-26T15:26:34.982Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":181,"timestamp":"2026-10-26T15:29:00.239Z"}
+{"level":"info","message":"⌛ Validating src/elMichinauta.wpgm","timeElapsed":147,"timestamp":"2026-10-26T15:29:00.458Z"}
+{"level":"info","message":"🚀 Program executed \u001b[3m\u001b[34msrc.elMichinauta.michinautaGame\u001b[39m\u001b[23m on \u001b[3m\u001b[34mc:\\Users\\Victoria\\Documents\\Universidad\\PdP\\2026-tp-objetos-wollok-game-grupo-04\u001b[39m\u001b[23m","ok":true,"timeElapsed":452,"timestamp":"2026-10-26T15:29:08.031Z"}
