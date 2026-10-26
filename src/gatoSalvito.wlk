@@ -22,19 +22,19 @@ object salvito {
 
     // Cambio de sprite con la posición.
     method moverArriba() {
-        image = "gato_espalda.png"
+        self.actualizarSprite("gato_espalda")
         position = position.up(1)
     }
     method moverAbajo() {
-        image = "gato_frente.png"
+        self.actualizarSprite("gato_frente")
         position = position.down(1)
     }
     method moverIzquierda() {
-        image = "gato_izquierdo.png"
+        self.actualizarSprite("gato_izquierdo")
         position = position.left(1)
     }
     method moverDerecha() {
-        image = "gato_derecho.png"
+        self.actualizarSprite("gato_derecho")
         position = position.right(1)
     }
 

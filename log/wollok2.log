@@ -320,3 +320,22 @@
 {"level":"info","message":"⌛ Validating test/pruebasMichinauta.wtest","timeElapsed":113,"timestamp":"2026-10-26T00:37:40.022Z"}
 {"level":"info","message":"⌛ Building environment","timeElapsed":138,"timestamp":"2026-10-26T00:37:43.530Z"}
 {"level":"info","message":"🧪 Test runner executed on c:\\Users\\Victoria\\Documents\\Universidad\\PdP\\2026-tp-objetos-wollok-game-grupo-04","result":{"errored":0,"failed":1,"ok":2},"testsFailed":[{"error":["wollok.lib.AssertionException: Expected <gato_espalda_izq.png> but found <gato_espalda.png>","  at test.pruebasMichinauta.\"Tests de movimiento y estado inicial de Salvito.\".\"Salvito se mueve actualizando su posición y alternando sus 3 imágenes de caminata.\" [test/pruebasMichinauta.wtest:28]"],"test":"test.pruebasMichinauta.\"Tests de movimiento y estado inicial de Salvito.\".\"Salvito se mueve actualizando su posición y alternando sus 3 imágenes de caminata.\""}],"timeElapsed":521,"timestamp":"2026-10-26T00:38:07.242Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":133,"timestamp":"2026-10-26T13:55:05.097Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":141,"timestamp":"2026-10-26T13:55:05.242Z"}
+{"level":"info","message":"⌛ Validating test/pruebasMichinauta.wtest","timeElapsed":103,"timestamp":"2026-10-26T13:55:05.604Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":132,"timestamp":"2026-10-26T13:55:05.738Z"}
+{"level":"info","message":"⌛ Validating src/elMichinauta.wpgm","timeElapsed":166,"timestamp":"2026-10-26T13:55:06.188Z"}
+{"level":"info","message":"⌛ Validating src/elementos.wlk","timeElapsed":197,"timestamp":"2026-10-26T13:55:06.386Z"}
+{"level":"info","message":"⌛ Validating src/niveles.wlk","timeElapsed":197,"timestamp":"2026-10-26T13:55:06.585Z"}
+{"level":"info","message":"⌛ Validating test/pruebasMichinauta.wtest","timeElapsed":241,"timestamp":"2026-10-26T13:55:06.828Z"}
+{"level":"info","message":"⌛ Validating src/gatoSalvito.wlk","timeElapsed":174,"timestamp":"2026-10-26T13:55:07.007Z"}
+{"level":"info","message":"⌛ Validating src/elMichinauta.wpgm","timeElapsed":161,"timestamp":"2026-10-26T13:55:07.169Z"}
+{"level":"info","message":"⌛ Validating src/elementos.wlk","timeElapsed":150,"timestamp":"2026-10-26T13:55:07.320Z"}
+{"level":"info","message":"⌛ Validating src/niveles.wlk","timeElapsed":129,"timestamp":"2026-10-26T13:55:07.450Z"}
+{"level":"info","message":"⌛ Validating src/gestores.wlk","timeElapsed":179,"timestamp":"2026-10-26T13:55:07.642Z"}
+{"level":"info","message":"⌛ Validating src/visualesPantalla.wlk","timeElapsed":182,"timestamp":"2026-10-26T13:55:07.837Z"}
+{"level":"info","message":"🧪 Test runner executed on c:\\Users\\Victoria\\Documents\\Universidad\\PdP\\2026-tp-objetos-wollok-game-grupo-04","result":{"errored":0,"failed":1,"ok":0},"testsFailed":[{"error":["wollok.lib.AssertionException: Expected <gato_espalda_izq.png> but found <gato_espalda.png>","  at test.pruebasMichinauta.\"Tests de movimiento y estado inicial de Salvito.\".\"Salvito se mueve actualizando su posición y alternando sus 3 imágenes de caminata.\" [test/pruebasMichinauta.wtest:28]"],"test":"test.pruebasMichinauta.\"Tests de movimiento y estado inicial de Salvito.\".\"Salvito se mueve actualizando su posición y alternando sus 3 imágenes de caminata.\""}],"timeElapsed":437,"timestamp":"2026-10-26T13:58:28.287Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":102,"timestamp":"2026-10-26T14:01:06.182Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":122,"timestamp":"2026-10-26T14:01:59.143Z"}
+{"level":"info","message":"🧪 Test runner executed on c:\\Users\\Victoria\\Documents\\Universidad\\PdP\\2026-tp-objetos-wollok-game-grupo-04","result":{"errored":0,"failed":0,"ok":1},"testsFailed":[],"timeElapsed":401,"timestamp":"2026-10-26T14:02:05.354Z"}
+{"level":"info","message":"🧪 Test runner executed on c:\\Users\\Victoria\\Documents\\Universidad\\PdP\\2026-tp-objetos-wollok-game-grupo-04","result":{"errored":0,"failed":0,"ok":3},"testsFailed":[],"timeElapsed":346,"timestamp":"2026-10-26T14:02:25.720Z"}
