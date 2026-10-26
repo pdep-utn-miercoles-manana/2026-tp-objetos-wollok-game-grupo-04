@@ -53,6 +53,7 @@ object gestorClima {
     }
 
     method arrancarTicks() {
+        nevando = true
         game.onTick(tiempoGeneracion, "generarNieve", {
             self.generarCopo()
         })
