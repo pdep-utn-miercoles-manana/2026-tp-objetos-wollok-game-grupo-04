@@ -1,0 +1,195 @@
+import wollok.game.*
+import src.gatoSalvito.*
+import src.elementos.*
+import src.gestores.*
+import src.niveles.*
+import src.visualesPantalla.*
+describe "Tests de movimiento y estado inicial de Salvito." {
+
+    method initialize() {
+        game.clear()
+        game.width(10)
+        game.height(10)
+        game.addVisual(salvito)
+    }
+
+    test "Salvito inicia en el subte (5,2) vivo, con 100 de oxígeno y 100 de velocidad." {
+        assert.equals(game.at(5, 2), salvito.position())
+        assert.equals(100, salvito.oxigeno())
+        assert.equals(100, salvito.velocidad())
+        assert.that(salvito.estaVivo())
+        assert.notThat(salvito.estaEnLaSuperficie())
+    }
+
+  test "Salvito se mueve actualizando su posición y alternando sus 3 imágenes de caminata." {
+        // Paso 1 (índice 0): adelanta pata izquierda.
+        salvito.moverArriba()
+        assert.equals(game.at(5, 3), salvito.position())
+        assert.equals("gato_espalda_izq.png", salvito.image())
+
+        // Paso 2 (índice 1): pasa por posición estática (4 patas).
+        salvito.moverAbajo()
+        assert.equals(game.at(5, 2), salvito.position())
+        assert.equals("gato_frente.png", salvito.image())
+
+        // Paso 3 (índice 2): adelanta pata derecha.
+        salvito.moverIzquierda()
+        assert.equals(game.at(4, 2), salvito.position())
+        assert.equals("gato_izquierdo_der.png", salvito.image())
+
+        // Paso 4 (índice 3): vuelve a posición estática (4 patas).
+        salvito.moverDerecha()
+        assert.equals(game.at(5, 2), salvito.position())
+        assert.equals("gato_derecho.png", salvito.image())
+    }
+
+    test "Salvito pasa a estar en la superficie cuando sube a una coordenada Y mayor o igual a 4." {
+        salvito.moverArriba() // (5, 3) -> sigue en el subte.
+        assert.notThat(salvito.estaEnLaSuperficie())
+
+        salvito.moverArriba() // (5, 4) -> entra a la calle.
+        assert.that(salvito.estaEnLaSuperficie())
+    }
+}
+
+describe "Tests de la mecánica Sube y Baja (asimilarAmbiente y límites de oxígeno)." {
+
+    method initialize() {
+        game.clear()
+        game.width(10)
+        game.height(10)
+        game.addVisual(salvito)
+    }
+
+    test "Al asimilar el ambiente en la superficie, Salvito pierde 5 de oxígeno pero mantiene su velocidad." {
+        salvito.position(game.at(5, 4))
+        salvito.asimilarAmbiente()
+
+        assert.equals(95, salvito.oxigeno())
+        assert.equals(100, salvito.velocidad())
+    }
+
+    test "Al asimilar el ambiente en el subte, Salvito recupera 10 de oxígeno sin superar el máximo de 100." {
+        const copo = new NieveToxica(position = game.at(5, 4))
+        salvito.sufrirImpacto(copo) // Oxígeno queda en 70.
+        salvito.position(game.at(5, 2)) // Está en el subte.
+
+        salvito.asimilarAmbiente()
+        assert.equals(80, salvito.oxigeno())
+
+        // Si vuelve a recuperar tres veces más, no supera el tope de 100.
+        salvito.asimilarAmbiente()
+        salvito.asimilarAmbiente()
+        salvito.asimilarAmbiente()
+        assert.equals(100, salvito.oxigeno())
+    }
+
+    test "Cuando el oxígeno llega a 0, no baja a valores negativos y Salvito deja de estar vivo." {
+        const copo = new NieveToxica(position = game.at(5, 5))
+        // 4 impactos de 30 de daño cada uno.
+        salvito.sufrirImpacto(copo)
+        salvito.sufrirImpacto(copo)
+        salvito.sufrirImpacto(copo)
+        salvito.sufrirImpacto(copo)
+
+        assert.equals(0, salvito.oxigeno())
+        assert.notThat(salvito.estaVivo())
+    }
+}
+
+describe "Tests de polimorfismo en colisiones con elementos y caída de nieve." {
+
+    const copoEnCalle = new NieveToxica(position = game.at(5, 5))
+    const copoEnBorde = new NieveToxica(position = game.at(5, 4))
+    const lata = new LataAtun(position = game.at(5, 5))
+
+    method initialize() {
+        game.clear()
+        game.width(10)
+        game.height(10)
+        game.addVisual(salvito)
+        game.addVisual(copoEnCalle)
+        game.addVisual(copoEnBorde)
+        game.addVisual(lata)
+    }
+
+    test "La NieveToxica reduce 30 de oxígeno y 20 de velocidad a Salvito y desaparece del tablero." {
+        copoEnCalle.afectarA(salvito)
+
+        assert.equals(70, salvito.oxigeno())
+        assert.equals(80, salvito.velocidad())
+        assert.notThat(game.hasVisual(copoEnCalle))
+    }
+
+    test "La LataAtun recupera 30 de velocidad sin superar 100, no modifica el oxígeno y desaparece." {
+        // Primero recibe daño de dos copos: oxígeno queda en 40 y velocidad en 60.
+        salvito.sufrirImpacto(copoEnCalle)
+        salvito.sufrirImpacto(copoEnBorde)
+        assert.equals(40, salvito.oxigeno())
+        assert.equals(60, salvito.velocidad())
+
+        // Choca con una lata de atún.
+        lata.afectarA(salvito)
+        assert.equals(40, salvito.oxigeno()) // El oxígeno no cambia
+        assert.equals(90, salvito.velocidad()) // Recupera 30 de velocidad.
+        assert.notThat(game.hasVisual(lata))
+
+        // Si recupera velocidad nuevamente, no supera el tope de 100.
+        salvito.recuperarVelocidad()
+        assert.equals(100, salvito.velocidad())
+    }
+
+    test "Un copo de NieveToxica desciende una posición al caer y detecta cuándo llega al subte." {
+        assert.notThat(copoEnCalle.llegoAlSubte()) // Desde Y = 5 baja a Y = 4 (sigue en calle).
+        copoEnCalle.caer()
+        assert.equals(game.at(5, 4), copoEnCalle.position())
+
+        assert.that(copoEnCalle.llegoAlSubte()) // Desde Y = 4 su siguiente paso es Y = 3 (subte).
+    }
+
+    test "El medidor de oxígeno refleja en texto el porcentaje actual de Salvito" {
+        assert.equals("OXÍGENO: 100%", medidorOxigeno.text())
+        copoEnCalle.afectarA(salvito)
+        assert.equals("OXÍGENO: 70%", medidorOxigeno.text())
+    }
+}
+
+describe "Tests de recolección de Piezas de Lore y avance de niveles." {
+
+    const cable = new PiezaDeLore(position = game.at(3, 6), image = "cable.png", nombreDeLaPieza = "Cable")
+    const valvula = new PiezaDeLore(position = game.at(7, 8), image = "valvula.png", nombreDeLaPieza = "Válvula")
+    const bateria = new PiezaDeLore(position = game.at(2, 5), image = "bateria.png", nombreDeLaPieza = "Batería")
+    const antena = new PiezaDeLore(position = game.at(6, 7), image = "antena.png", nombreDeLaPieza = "Antena")
+
+    method initialize() {
+        game.clear()
+        game.width(10)
+        game.height(10)
+        game.addVisual(salvito)
+        game.addVisual(cable)
+        game.addVisual(valvula)
+        game.addVisual(bateria)
+        game.addVisual(antena)
+        gestorClima.iniciarNevada()
+    }
+
+    test "El gestor de nivel comienza en el nivelUno y al recolectar una sola pieza se mantiene en el mismo nivel." {
+        assert.equals(nivelUno, gestorDeNivel.nivelActual())
+
+        cable.afectarA(salvito)
+        assert.notThat(game.hasVisual(cable))
+        assert.equals(nivelUno, gestorDeNivel.nivelActual())
+    }
+
+    test "Al recolectar las 2 piezas requeridas de un nivel, se avanza automáticamente al siguiente nivel." {
+        // Completa el Nivel 1 -> pasa al Nivel 2.
+        cable.afectarA(salvito)
+        valvula.afectarA(salvito)
+        assert.equals(nivelDos, gestorDeNivel.nivelActual())
+
+        // Completa el Nivel 2 -> pasa al Nivel 3.
+        bateria.afectarA(salvito)
+        antena.afectarA(salvito)
+        assert.equals(nivelTres, gestorDeNivel.nivelActual())
+    }
+}

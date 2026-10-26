@@ -46,6 +46,7 @@ object gestorClima {
     const coposEnPantalla = []
     var tiempoGeneracion = 1500
     var tiempoCaida = 300
+    var nevando = false
 
     method iniciarNevada() {
         self.arrancarTicks()
@@ -89,7 +90,10 @@ object gestorClima {
     }
     
     method frenarNevada() {
-        game.removeTickEvent("generarNieve")
-        game.removeTickEvent("caidaDeNieve")
+        if (nevando) {
+            game.removeTickEvent("generarNieve")
+            game.removeTickEvent("caidaDeNieve")
+            nevando = false
+        }
     }
 }

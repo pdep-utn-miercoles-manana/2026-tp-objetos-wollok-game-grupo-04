@@ -3,12 +3,22 @@ import elementos.*
 
 object salvito {
     var property position = game.at(5, 2)
-    var property image = "gatoMichinauta.png"
+    var property image = "gato_frente.png"
     var oxigeno = 100
     var velocidad = 100 
 
+    // Ciclo de 4 tiempos para la caminata del gato.
+    const sufijosCaminata = ["_izq.png", ".png", "_der.png", ".png"]
+    var indicePaso = 0
+
     method oxigeno() = oxigeno
     method velocidad() = velocidad
+
+    // Actualiza la imagen según la dirección y avanza al siguiente cuadro de caminata
+    method actualizarSprite(direccionBase) {
+        image = direccionBase + sufijosCaminata.get(indicePaso)
+        indicePaso = (indicePaso + 1) % sufijosCaminata.size()
+    }
 
     // Cambio de sprite con la posición.
     method moverArriba() {

@@ -38,10 +38,10 @@ object logicaJuego {
 
 program michinautaGame {
     game.title("El Michinauta")
-    game.width(10)
+    game.width(16)
     game.height(10)
     game.cellSize(50)
-    
+
     logicaJuego.arrancar()
     
     game.start()
