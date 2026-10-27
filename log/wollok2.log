@@ -387,3 +387,16 @@
 {"level":"info","message":"⌛ Validating src/elMichinauta.wpgm","timeElapsed":119,"timestamp":"2026-10-27T13:07:46.191Z"}
 {"level":"info","message":"⌛ Building environment","timeElapsed":109,"timestamp":"2026-10-27T14:55:19.301Z"}
 {"level":"info","message":"⌛ Validating src/niveles.wlk","timeElapsed":109,"timestamp":"2026-10-27T14:55:19.415Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":155,"timestamp":"2026-10-27T15:54:43.182Z"}
+{"level":"info","message":"⌛ Validating src/elMichinauta.wpgm","timeElapsed":106,"timestamp":"2026-10-27T15:54:43.341Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":155,"timestamp":"2026-10-27T15:57:02.152Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":117,"timestamp":"2026-10-27T16:10:17.444Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":169,"timestamp":"2026-10-27T16:10:41.657Z"}
+{"level":"info","message":"🧪 Test runner executed on c:\\Users\\Victoria\\Documents\\Universidad\\PdP\\2026-tp-objetos-wollok-game-grupo-04","result":{"errored":0,"failed":0,"ok":1},"testsFailed":[],"timeElapsed":397,"timestamp":"2026-10-27T16:11:13.135Z"}
+{"level":"info","message":"🧪 Test runner executed on ./","result":{"errored":0,"failed":0,"ok":13},"testsFailed":[],"timeElapsed":535,"timestamp":"2026-10-27T16:12:43.876Z"}
+{"level":"info","message":"🚀 Program executed \u001b[3m\u001b[34msrc.elMichinauta.michinautaGame\u001b[39m\u001b[23m on \u001b[3m\u001b[34m./\u001b[39m\u001b[23m","ok":true,"timeElapsed":309,"timestamp":"2026-10-27T16:13:17.450Z"}
+{"exitCode":"SIGINT","level":"info","message":"👾 Game executed src.elMichinauta.michinautaGame on ./","timeElapsed":21479,"timestamp":"2026-10-27T16:13:38.619Z"}
+{"level":"info","message":"🚀 Program executed \u001b[3m\u001b[34msrc.elMichinauta.michinautaGame\u001b[39m\u001b[23m on \u001b[3m\u001b[34m./\u001b[39m\u001b[23m","ok":true,"timeElapsed":393,"timestamp":"2026-10-27T16:16:22.329Z"}
+{"exitCode":"SIGINT","level":"info","message":"👾 Game executed src.elMichinauta.michinautaGame on ./","timeElapsed":14699,"timestamp":"2026-10-27T16:16:36.634Z"}
+{"level":"info","message":"🚀 Program executed \u001b[3m\u001b[34msrc.elMichinauta.michinautaGame\u001b[39m\u001b[23m on \u001b[3m\u001b[34mc:\\Users\\Victoria\\Documents\\Universidad\\PdP\\2026-tp-objetos-wollok-game-grupo-04\u001b[39m\u001b[23m","ok":true,"timeElapsed":307,"timestamp":"2026-10-27T16:18:26.457Z"}
+{"exitCode":"SIGHUP","level":"info","message":"👾 Game executed src.elMichinauta.michinautaGame on c:\\Users\\Victoria\\Documents\\Universidad\\PdP\\2026-tp-objetos-wollok-game-grupo-04","timeElapsed":137771,"timestamp":"2026-10-27T16:20:43.922Z"}

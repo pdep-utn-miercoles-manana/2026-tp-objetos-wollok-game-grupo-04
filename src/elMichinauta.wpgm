@@ -5,11 +5,16 @@ import visualesPantalla.*
 import gestores.*
 
 object logicaJuego {
+    var partidaIniciada = false
+
     method arrancar() {
         game.addVisual(pantallaDeTitulo)
         keyboard.enter().onPressDo({
-            game.removeVisual(pantallaDeTitulo)
-            self.iniciarPartida()
+            if (!partidaIniciada) {
+                partidaIniciada = true
+                game.removeVisual(pantallaDeTitulo)
+                self.iniciarPartida()
+            }
         })
     }
 
@@ -20,11 +25,11 @@ object logicaJuego {
 
         gestorDeNivel.iniciarJuego()
 
-        // Delegamos el movimiento y cambio de sprite en Salvito.
-        keyboard.up().onPressDo({ salvito.moverArriba() })
-        keyboard.down().onPressDo({ salvito.moverAbajo() })
-        keyboard.left().onPressDo({ salvito.moverIzquierda() })
-        keyboard.right().onPressDo({ salvito.moverDerecha() })
+        // Delegamos el movimiento respetando el enfriamiento por velocidad y los bordes.
+        keyboard.up().onPressDo({ salvito.intentarMover({ salvito.moverArriba() }) })
+        keyboard.down().onPressDo({ salvito.intentarMover({ salvito.moverAbajo() }) })
+        keyboard.left().onPressDo({ salvito.intentarMover({ salvito.moverIzquierda() }) })
+        keyboard.right().onPressDo({ salvito.intentarMover({ salvito.moverDerecha() }) })
 
         // Polimorfismo en colisiones con cualquier elemento del tablero.
         game.onCollideDo(salvito, { elemento => elemento.afectarA(salvito) })

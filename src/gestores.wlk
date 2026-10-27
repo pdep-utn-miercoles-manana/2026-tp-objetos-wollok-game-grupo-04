@@ -37,6 +37,7 @@ object gestorDeNivel {
 
     method ganarJuego() {
         game.boardGround("refugio.png")
+        game.removeTickEvent("cicloDeOxigeno")
         gestorClima.frenarNevada()
         game.say(salvito, "¡Llegué al refugio! Creo que escucho humanos hablando...")
     }
@@ -92,6 +93,7 @@ object gestorClima {
     
     method frenarNevada() {
         if (nevando) {
+            coposEnPantalla.copy().forEach({ copo => self.eliminarCopo(copo) })
             game.removeTickEvent("generarNieve")
             game.removeTickEvent("caidaDeNieve")
             nevando = false

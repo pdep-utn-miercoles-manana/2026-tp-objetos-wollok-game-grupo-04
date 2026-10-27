@@ -50,6 +50,13 @@ describe "Tests de movimiento y estado inicial de Salvito." {
         salvito.moverArriba() // (5, 4) -> entra a la calle.
         assert.that(salvito.estaEnLaSuperficie())
     }
+
+    test "Salvito no puede salirse de los bordes del tablero." {
+        salvito.position(game.at(0, 0))
+        salvito.moverIzquierda()
+        salvito.moverAbajo()
+        assert.equals(game.at(0, 0), salvito.position())
+    }
 }
 
 describe "Tests de la mecánica Sube y Baja (asimilarAmbiente y límites de oxígeno)." {
