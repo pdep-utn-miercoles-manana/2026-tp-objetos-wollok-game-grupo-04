@@ -36,7 +36,7 @@ const nivelDos = new Nivel(
     imagenFondo = "nivel2.png", velGeneracion = 1200, velCaida = 200, 
     mensajeInicial = "Está nevando con más fuerza... ¿eso que escuché fueron disparos?",
     elementosDelNivel = [
-        new PiezaDeLore(position = game.at(1, 8), image = "casco.png", nombreDeLaPieza = "Casco roto"),
+        new PiezaDeLore(position = game.at(1, 8), image = "gorra.png", nombreDeLaPieza = "Gorra militar"),
         new PiezaDeLore(position = game.at(8, 5), image = "arma.png", nombreDeLaPieza = "Arma"),
         new LataAtun(position = game.at(4, 6))
     ]

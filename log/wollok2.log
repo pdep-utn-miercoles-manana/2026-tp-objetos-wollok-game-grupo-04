@@ -363,3 +363,13 @@
 {"level":"info","message":"⌛ Validating src/gestores.wlk","timeElapsed":113,"timestamp":"2026-10-27T01:16:28.985Z"}
 {"level":"info","message":"⌛ Building environment","timeElapsed":182,"timestamp":"2026-10-27T01:20:16.186Z"}
 {"level":"info","message":"⌛ Validating src/elMichinauta.wpgm","timeElapsed":102,"timestamp":"2026-10-27T01:20:16.336Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":133,"timestamp":"2026-10-27T02:13:41.893Z"}
+{"level":"error","message":"✘ Failed to rebuild document Missing workspace folder!","stack":"Error: Missing workspace folder!\n    at QF (c:\\Users\\Victoria\\.vscode\\extensions\\uqbar.wollok-lsp-ide-0.5.5\\out\\server\\src\\server.js:2430:7332)\n    at V3.invoke (c:\\Users\\Victoria\\.vscode\\extensions\\uqbar.wollok-lsp-ide-0.5.5\\out\\server\\src\\server.js:3:157330)\n    at o.fire (c:\\Users\\Victoria\\.vscode\\extensions\\uqbar.wollok-lsp-ide-0.5.5\\out\\server\\src\\server.js:3:158100)\n    at c:\\Users\\Victoria\\.vscode\\extensions\\uqbar.wollok-lsp-ide-0.5.5\\out\\server\\src\\server.js:37:57488\n    at nd (c:\\Users\\Victoria\\.vscode\\extensions\\uqbar.wollok-lsp-ide-0.5.5\\out\\server\\src\\server.js:8:1561)\n    at It (c:\\Users\\Victoria\\.vscode\\extensions\\uqbar.wollok-lsp-ide-0.5.5\\out\\server\\src\\server.js:7:6224)\n    at et (c:\\Users\\Victoria\\.vscode\\extensions\\uqbar.wollok-lsp-ide-0.5.5\\out\\server\\src\\server.js:7:6378)\n    at Immediate._onImmediate (c:\\Users\\Victoria\\.vscode\\extensions\\uqbar.wollok-lsp-ide-0.5.5\\out\\server\\src\\server.js:7:6142)\n    at process.processImmediate (node:internal/timers:574:21)","timestamp":"2026-10-27T02:13:41.898Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":156,"timestamp":"2026-10-27T02:13:44.041Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":190,"timestamp":"2026-10-27T02:13:44.334Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":214,"timestamp":"2026-10-27T02:13:44.631Z"}
+{"level":"info","message":"⌛ Validating src/niveles.wlk","timeElapsed":102,"timestamp":"2026-10-27T02:13:44.734Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":142,"timestamp":"2026-10-27T02:13:44.881Z"}
+{"level":"info","message":"⌛ Validating test/pruebasMichinauta.wtest","timeElapsed":106,"timestamp":"2026-10-27T02:13:44.988Z"}
+{"level":"info","message":"⌛ Validating src/gatoSalvito.wlk","timeElapsed":110,"timestamp":"2026-10-27T02:13:45.285Z"}
+{"level":"info","message":"⌛ Validating src/niveles.wlk","timeElapsed":141,"timestamp":"2026-10-27T02:13:45.967Z"}
