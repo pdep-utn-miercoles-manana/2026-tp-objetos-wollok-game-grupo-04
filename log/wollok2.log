@@ -351,3 +351,15 @@
 {"level":"info","message":"⌛ Building environment","timeElapsed":181,"timestamp":"2026-10-26T15:29:00.239Z"}
 {"level":"info","message":"⌛ Validating src/elMichinauta.wpgm","timeElapsed":147,"timestamp":"2026-10-26T15:29:00.458Z"}
 {"level":"info","message":"🚀 Program executed \u001b[3m\u001b[34msrc.elMichinauta.michinautaGame\u001b[39m\u001b[23m on \u001b[3m\u001b[34mc:\\Users\\Victoria\\Documents\\Universidad\\PdP\\2026-tp-objetos-wollok-game-grupo-04\u001b[39m\u001b[23m","ok":true,"timeElapsed":452,"timestamp":"2026-10-26T15:29:08.031Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":223,"timestamp":"2026-10-26T15:33:00.492Z"}
+{"level":"info","message":"⌛ Validating src/gatoSalvito.wlk","timeElapsed":148,"timestamp":"2026-10-26T15:33:00.698Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":126,"timestamp":"2026-10-26T15:35:51.563Z"}
+{"level":"info","message":"⌛ Validating src/gatoSalvito.wlk","timeElapsed":118,"timestamp":"2026-10-26T15:35:51.685Z"}
+{"exitCode":"SIGHUP","level":"info","message":"👾 Game executed src.elMichinauta.michinautaGame on c:\\Users\\Victoria\\Documents\\Universidad\\PdP\\2026-tp-objetos-wollok-game-grupo-04","timeElapsed":436634,"timestamp":"2026-10-26T15:36:24.218Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":130,"timestamp":"2026-10-27T01:16:27.620Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":146,"timestamp":"2026-10-27T01:16:27.774Z"}
+{"level":"info","message":"⌛ Validating src/niveles.wlk","timeElapsed":169,"timestamp":"2026-10-27T01:16:28.134Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":113,"timestamp":"2026-10-27T01:16:28.353Z"}
+{"level":"info","message":"⌛ Validating src/gestores.wlk","timeElapsed":113,"timestamp":"2026-10-27T01:16:28.985Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":182,"timestamp":"2026-10-27T01:20:16.186Z"}
+{"level":"info","message":"⌛ Validating src/elMichinauta.wpgm","timeElapsed":102,"timestamp":"2026-10-27T01:20:16.336Z"}

@@ -27,7 +27,7 @@ const nivelUno = new Nivel(
     mensajeInicial = "Debo armar una radio, ¡tengo que saber qué pasó!",
     elementosDelNivel = [
         new PiezaDeLore(position = game.at(2, 6), image = "cable.png", nombreDeLaPieza = "Cable"),
-        new PiezaDeLore(position = game.at(7, 8), image = "radio.png", nombreDeLaPieza = "Válvula"),
+        new PiezaDeLore(position = game.at(7, 8), image = "radio.png", nombreDeLaPieza = "Radio"),
         new LataAtun(position = game.at(5, 7))
     ]
 )
@@ -37,7 +37,7 @@ const nivelDos = new Nivel(
     mensajeInicial = "Está nevando con más fuerza... ¿eso que escuché fueron disparos?",
     elementosDelNivel = [
         new PiezaDeLore(position = game.at(1, 8), image = "casco.png", nombreDeLaPieza = "Casco roto"),
-        new PiezaDeLore(position = game.at(8, 5), image = "arma.png", nombreDeLaPieza = "Plaqueta"),
+        new PiezaDeLore(position = game.at(8, 5), image = "arma.png", nombreDeLaPieza = "Arma"),
         new LataAtun(position = game.at(4, 6))
     ]
 )
