@@ -19,25 +19,24 @@ object logicaJuego {
     }
 
     method iniciarPartida() {
+        // 1. El fondo se agrega primero para quedar en la capa inferior.
+        game.addVisual(fondo)
         game.addVisual(iconoPecera)
         game.addVisual(medidorOxigeno)
         game.addVisual(salvito)
 
+        // 2. Inicia el nivel 1 y activa el ciclo de oxígeno.
         gestorDeNivel.iniciarJuego()
 
-        // Delegamos el movimiento respetando el enfriamiento por velocidad y los bordes.
+        // 3. Controles de movimiento y tecla R para reintentar al perder/ganar.
         keyboard.up().onPressDo({ salvito.intentarMover({ salvito.moverArriba() }) })
         keyboard.down().onPressDo({ salvito.intentarMover({ salvito.moverAbajo() }) })
         keyboard.left().onPressDo({ salvito.intentarMover({ salvito.moverIzquierda() }) })
         keyboard.right().onPressDo({ salvito.intentarMover({ salvito.moverDerecha() }) })
+        keyboard.r().onPressDo({ gestorDeNivel.intentarReiniciar() })
 
-        // Polimorfismo en colisiones con cualquier elemento del tablero.
+        // 4. Polimorfismo en colisiones con cualquier elemento del tablero.
         game.onCollideDo(salvito, { elemento => elemento.afectarA(salvito) })
-
-        // Delegación total del ciclo de oxígeno en Salvito.
-        game.onTick(1000, "cicloDeOxigeno", {
-            salvito.asimilarAmbiente()
-        })
     }
 }
 

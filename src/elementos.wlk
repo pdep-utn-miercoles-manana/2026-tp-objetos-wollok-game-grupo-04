@@ -54,8 +54,8 @@ class PiezaDeLore inherits ElementoDeSuperficie {
     override method image() = image
 
     override method aplicarEfectoA(unMichinauta) {
-        gestorDeNivel.recolectarPieza()
         game.say(unMichinauta, "Encontré: ¡" + nombreDeLaPieza + "! :O")
+        gestorDeNivel.recolectarPieza()
     }
 }
 

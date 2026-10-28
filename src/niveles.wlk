@@ -2,6 +2,7 @@ import wollok.game.*
 import gatoSalvito.*
 import gestores.*
 import elementos.*
+import visualesPantalla.*
 
 class Nivel {
     const imagenFondo 
@@ -11,12 +12,20 @@ class Nivel {
     const elementosDelNivel = []
 
     method cargarNivel() {
-        game.boardGround(imagenFondo) 
+        fondo.image(imagenFondo) 
         game.say(salvito, mensajeInicial)
         gestorClima.cambiarDificultad(velGeneracion, velCaida)
         elementosDelNivel.forEach({ elemento => 
             if (!game.hasVisual(elemento)) {
                 game.addVisual(elemento)
+            }
+        })
+    }
+
+    method limpiarElementos() {
+        elementosDelNivel.forEach({ elemento =>
+            if (game.hasVisual(elemento)) {
+                game.removeVisual(elemento)
             }
         })
     }
