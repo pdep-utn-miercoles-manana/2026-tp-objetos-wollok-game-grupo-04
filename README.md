@@ -24,10 +24,10 @@ Es un juego de gestión de recursos y tensión constante basado en la mecánica 
 *   **Objetivo:** El jugador está obligado a subir a la superficie para recolectar **cables/repuestos** (para avanzar de nivel) y **latas de atún** (para recuperar velocidad), pero debe bajar desesperadamente a la zona segura para no quedarse sin aire.
 
 ### 🕹️ Controles
-*   **W / Flecha Arriba:** Mover hacia arriba.
-*   **S / Flecha Abajo:** Mover hacia abajo.
-*   **A / Flecha Izquierda:** Mover hacia la izquierda.
-*   **D / Flecha Derecha:** Mover hacia la derecha.
+*   **Flecha Arriba:** Mover hacia arriba.
+*   **Flecha Abajo:** Mover hacia abajo.
+*   **Flecha Izquierda:** Mover hacia la izquierda.
+*   **Flecha Derecha:** Mover hacia la derecha.
 
 ### 💻 Conceptos de objetos aplicados
 (Próximamente...)
