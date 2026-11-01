@@ -154,10 +154,14 @@ describe "Tests de polimorfismo en colisiones con elementos y caída de nieve." 
         assert.that(copoEnCalle.llegoAlSubte()) // Desde Y = 4 su siguiente paso es Y = 3 (subte).
     }
 
-    test "El medidor de oxígeno refleja en texto el porcentaje actual de Salvito" {
-        assert.equals("OXÍGENO: 100%", medidorOxigeno.text())
-        copoEnCalle.afectarA(salvito)
-        assert.equals("OXÍGENO: 70%", medidorOxigeno.text())
+    test "La barra de oxígeno refleja visualmente el porcentaje actual de Salvito" {
+        // Inicia en 100
+        assert.equals("oxigeno_100.png", barraOxigeno.image())
+        
+        copoEnCalle.afectarA(salvito) 
+        
+        // El oxígeno baja a 70. Como está entre 60 y 80, la barra mostrará la imagen de 80.
+        assert.equals("oxigeno_80.png", barraOxigeno.image())
     }
 }
 

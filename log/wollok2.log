@@ -448,3 +448,34 @@
 {"level":"info","message":"⌛ Building environment","timeElapsed":169,"timestamp":"2026-10-28T02:37:08.656Z"}
 {"level":"info","message":"⌛ Validating src/elementos.wlk","timeElapsed":186,"timestamp":"2026-10-28T02:37:08.907Z"}
 {"exitCode":"SIGHUP","level":"info","message":"👾 Game executed src.elMichinauta.michinautaGame on c:\\Users\\Victoria\\Documents\\Universidad\\PdP\\2026-tp-objetos-wollok-game-grupo-04","timeElapsed":2574024,"timestamp":"2026-10-28T02:50:17.729Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":129,"timestamp":"2026-10-28T15:15:29.717Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":131,"timestamp":"2026-10-28T15:15:29.852Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":207,"timestamp":"2026-10-28T15:15:30.168Z"}
+{"level":"info","message":"⌛ Validating src/elMichinauta.wpgm","timeElapsed":191,"timestamp":"2026-10-28T15:15:30.360Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":145,"timestamp":"2026-10-28T15:15:30.505Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":122,"timestamp":"2026-10-28T15:15:30.647Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":173,"timestamp":"2026-10-28T15:15:31.135Z"}
+{"level":"info","message":"🚀 Program executed \u001b[3m\u001b[34msrc.elMichinauta.michinautaGame\u001b[39m\u001b[23m on \u001b[3m\u001b[34mc:\\Users\\Victoria\\Documents\\Universidad\\PdP\\2026-tp-objetos-wollok-game-grupo-04\u001b[39m\u001b[23m","ok":true,"timeElapsed":414,"timestamp":"2026-10-28T15:17:38.345Z"}
+{"exitCode":"SIGHUP","level":"info","message":"👾 Game executed src.elMichinauta.michinautaGame on c:\\Users\\Victoria\\Documents\\Universidad\\PdP\\2026-tp-objetos-wollok-game-grupo-04","timeElapsed":674684,"timestamp":"2026-10-28T15:28:52.622Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":169,"timestamp":"2026-11-01T20:54:02.508Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":150,"timestamp":"2026-11-01T20:54:02.662Z"}
+{"level":"info","message":"⌛ Validating src/elMichinauta.wpgm","timeElapsed":265,"timestamp":"2026-11-01T20:54:02.951Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":211,"timestamp":"2026-11-01T20:54:03.164Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":440,"timestamp":"2026-11-01T20:54:03.663Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":207,"timestamp":"2026-11-01T20:54:03.920Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":260,"timestamp":"2026-11-01T20:54:04.240Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":334,"timestamp":"2026-11-01T20:54:04.576Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":231,"timestamp":"2026-11-01T20:54:04.809Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":274,"timestamp":"2026-11-01T20:54:05.101Z"}
+{"level":"info","message":"⌛ Validating src/visualesPantalla.wlk","timeElapsed":114,"timestamp":"2026-11-01T20:54:16.799Z"}
+{"level":"info","message":"⌛ Validating src/niveles.wlk","timeElapsed":107,"timestamp":"2026-11-01T20:54:16.907Z"}
+{"level":"info","message":"⌛ Validating src/elementos.wlk","timeElapsed":121,"timestamp":"2026-11-01T20:54:17.175Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":215,"timestamp":"2026-11-01T20:54:17.391Z"}
+{"level":"info","message":"⌛ Validating src/elMichinauta.wpgm","timeElapsed":104,"timestamp":"2026-11-01T20:54:17.582Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":113,"timestamp":"2026-11-01T22:41:12.766Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":197,"timestamp":"2026-11-01T22:44:35.693Z"}
+{"level":"info","message":"⌛ Validating test/pruebasMichinauta.wtest","timeElapsed":155,"timestamp":"2026-11-01T22:44:35.917Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":164,"timestamp":"2026-11-01T23:07:12.008Z"}
+{"level":"info","message":"⌛ Validating src/elMichinauta.wpgm","timeElapsed":117,"timestamp":"2026-11-01T23:07:12.185Z"}
+{"level":"info","message":"⌛ Validating src/visualesPantalla.wlk","timeElapsed":115,"timestamp":"2026-11-01T23:07:12.301Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":145,"timestamp":"2026-11-01T23:07:14.082Z"}

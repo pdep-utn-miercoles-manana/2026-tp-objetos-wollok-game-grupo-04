@@ -19,10 +19,10 @@ object logicaJuego {
     }
 
     method iniciarPartida() {
-        // 1. El fondo se agrega primero para quedar en la capa inferior.
+        // 1. Fondo y barras de estado gráficas
         game.addVisual(fondo)
-        game.addVisual(iconoPecera)
-        game.addVisual(medidorOxigeno)
+        game.addVisual(barraOxigeno)
+        game.addVisual(barraVelocidad)
         game.addVisual(salvito)
 
         // 2. Inicia el nivel 1 y activa el ciclo de oxígeno.
@@ -44,7 +44,7 @@ program michinautaGame {
     game.title("El Michinauta")
     game.width(16)
     game.height(10)
-    game.cellSize(50)
+    game.cellSize(80)
 
     logicaJuego.arrancar()
     
