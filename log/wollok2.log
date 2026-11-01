@@ -479,3 +479,10 @@
 {"level":"info","message":"⌛ Validating src/elMichinauta.wpgm","timeElapsed":117,"timestamp":"2026-11-01T23:07:12.185Z"}
 {"level":"info","message":"⌛ Validating src/visualesPantalla.wlk","timeElapsed":115,"timestamp":"2026-11-01T23:07:12.301Z"}
 {"level":"info","message":"⌛ Building environment","timeElapsed":145,"timestamp":"2026-11-01T23:07:14.082Z"}
+{"level":"info","message":"🚀 Program executed \u001b[3m\u001b[34msrc.elMichinauta.michinautaGame\u001b[39m\u001b[23m on \u001b[3m\u001b[34mc:\\Users\\Victoria\\Documents\\Universidad\\PdP\\2026-tp-objetos-wollok-game-grupo-04\u001b[39m\u001b[23m","ok":true,"timeElapsed":404,"timestamp":"2026-11-01T23:09:24.694Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":137,"timestamp":"2026-11-01T23:12:11.080Z"}
+{"exitCode":"SIGHUP","level":"info","message":"👾 Game executed src.elMichinauta.michinautaGame on c:\\Users\\Victoria\\Documents\\Universidad\\PdP\\2026-tp-objetos-wollok-game-grupo-04","timeElapsed":664195,"timestamp":"2026-11-01T23:20:28.487Z"}
+{"level":"info","message":"🚀 Program executed \u001b[3m\u001b[34msrc.elMichinauta.michinautaGame\u001b[39m\u001b[23m on \u001b[3m\u001b[34mc:\\Users\\Victoria\\Documents\\Universidad\\PdP\\2026-tp-objetos-wollok-game-grupo-04\u001b[39m\u001b[23m","ok":true,"timeElapsed":375,"timestamp":"2026-11-01T23:20:30.593Z"}
+{"exitCode":"SIGHUP","level":"info","message":"👾 Game executed src.elMichinauta.michinautaGame on c:\\Users\\Victoria\\Documents\\Universidad\\PdP\\2026-tp-objetos-wollok-game-grupo-04","timeElapsed":342620,"timestamp":"2026-11-01T23:26:12.838Z"}
+{"level":"info","message":"🚀 Program executed \u001b[3m\u001b[34msrc.elMichinauta.michinautaGame\u001b[39m\u001b[23m on \u001b[3m\u001b[34mc:\\Users\\Victoria\\Documents\\Universidad\\PdP\\2026-tp-objetos-wollok-game-grupo-04\u001b[39m\u001b[23m","ok":true,"timeElapsed":327,"timestamp":"2026-11-01T23:26:14.878Z"}
+{"exitCode":"SIGHUP","level":"info","message":"👾 Game executed src.elMichinauta.michinautaGame on c:\\Users\\Victoria\\Documents\\Universidad\\PdP\\2026-tp-objetos-wollok-game-grupo-04","timeElapsed":1217244,"timestamp":"2026-11-01T23:46:31.796Z"}
