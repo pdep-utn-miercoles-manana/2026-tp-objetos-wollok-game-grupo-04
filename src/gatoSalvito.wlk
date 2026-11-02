@@ -3,7 +3,8 @@ import elementos.*
 import gestores.*
 
 object salvito {
-    const posicionInicial = game.at(5, 2)
+    // Columna 4 (x = 3), Fila 10 (y = 0)
+    const posicionInicial = game.at(3, 0)
     var property position = posicionInicial
     var property image = "gato_frente.png"
     var oxigeno = 100
@@ -12,6 +13,26 @@ object salvito {
 
     const sufijosCaminata = ["_izq.png", ".png", "_der.png", ".png"]
     var indicePaso = 0
+
+    // Filas prohibidas (notación 1 a 10 de arriba hacia abajo) para cada columna (1 a 16 de izquierda a derecha)
+    const filasNoPermitidasPorColumna = [
+        [1, 7, 8, 9],        // Columna 1 (x = 0)
+        [1, 7, 8, 9],        // Columna 2 (x = 1)
+        [1, 7, 8, 9],        // Columna 3 (x = 2)
+        [1, 7, 8],           // Columna 4 (x = 3)
+        [1, 7, 8],           // Columna 5 (x = 4)
+        [1, 7, 8],           // Columna 6 (x = 5)
+        [1, 7, 8, 9],        // Columna 7 (x = 6)
+        [1, 7, 8, 9],        // Columna 8 (x = 7)
+        [1, 7, 8],           // Columna 9 (x = 8)
+        [1, 3, 7, 8],        // Columna 10 (x = 9)
+        [1, 3, 7, 8],        // Columna 11 (x = 10)
+        [1, 2, 3, 7, 8],     // Columna 12 (x = 11)
+        [1, 2, 7, 8],        // Columna 13 (x = 12)
+        [1, 2],              // Columna 14 (x = 13)
+        [1, 2, 7, 8, 9, 10], // Columna 15 (x = 14)
+        [1, 2, 7, 8, 9, 10]  // Columna 16 (x = 15)
+    ]
 
     method oxigeno() = oxigeno
     method velocidad() = velocidad
@@ -25,8 +46,16 @@ object salvito {
         unaPosicion.x().between(0, game.width() - 1) and
         unaPosicion.y().between(0, game.height() - 1)
 
+    method filaSegunNotacion(unaPosicion) = 10 - unaPosicion.y()
+
+    method esCeldaPermitida(unaPosicion) =
+        !filasNoPermitidasPorColumna.get(unaPosicion.x()).contains(self.filaSegunNotacion(unaPosicion))
+
+    method puedeCaminarEn(unaPosicion) =
+        self.dentroDelTablero(unaPosicion) and self.esCeldaPermitida(unaPosicion)
+
     method avanzarSiPuedeA(nuevaPosicion) {
-        if (self.dentroDelTablero(nuevaPosicion)) {
+        if (self.puedeCaminarEn(nuevaPosicion)) {
             position = nuevaPosicion
         }
     }

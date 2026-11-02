@@ -9,12 +9,14 @@ object gestorDeNivel {
     var indice = 0 
     var piezasRecolectadas = 0
     var cicloOxigenoActivo = false
-    var esperandoReinicio = false
+    var esperandoReinicioNivel = false
+    var esperandoReinicioJuego = false
 
     method nivelActual() = nivelesDeJuego.get(indice) 
 
     method iniciarJuego() {
-        esperandoReinicio = false
+        esperandoReinicioNivel = false
+        esperandoReinicioJuego = false
         self.iniciarCicloOxigeno()
         self.nivelActual().cargarNivel()
     }
@@ -67,7 +69,7 @@ object gestorDeNivel {
             if (!game.hasVisual(pantallaGanaste)) {
                 game.addVisual(pantallaGanaste)
             }
-            esperandoReinicio = true
+            esperandoReinicioJuego = true
         })
     }
 
@@ -79,39 +81,73 @@ object gestorDeNivel {
         if (!game.hasVisual(pantallaGameOver)) {
             game.addVisual(pantallaGameOver)
         }
-        esperandoReinicio = true
+        esperandoReinicioNivel = true
     }
 
-    method intentarReiniciar() {
-        if (esperandoReinicio) {
+    method intentarReiniciarNivel() {
+        if (esperandoReinicioNivel) {
             if (game.hasVisual(pantallaGameOver)) {
                 game.removeVisual(pantallaGameOver)
             }
+            piezasRecolectadas = 0
+            self.iniciarJuego()
+        }
+    }
+
+    method intentarVolverAEmpezar() {
+        if (esperandoReinicioJuego) {
             if (game.hasVisual(pantallaGanaste)) {
                 game.removeVisual(pantallaGanaste)
             }
             indice = 0
             piezasRecolectadas = 0
-            salvito.reiniciar()
             self.iniciarJuego()
         }
     }
 }
 
-// (El object gestorClima queda exactamente igual a como ya lo tenés)
-
 object gestorClima {
     const coposEnPantalla = []
+    const copitosDecorativos = [
+        new CopoMiniatura(position = game.at(1, 9)),
+        new CopoMiniatura(position = game.at(3, 7)),
+        new CopoMiniatura(position = game.at(5, 5)),
+        new CopoMiniatura(position = game.at(7, 8)),
+        new CopoMiniatura(position = game.at(9, 6)),
+        new CopoMiniatura(position = game.at(11, 9)),
+        new CopoMiniatura(position = game.at(13, 7)),
+        new CopoMiniatura(position = game.at(15, 5))
+    ]
     var tiempoGeneracion = 1500
     var tiempoCaida = 300
     var nevando = false
+    var property movimientoHorizontalActivo = false
 
     method iniciarNevada() {
+        movimientoHorizontalActivo = false
         self.arrancarTicks()
+    }
+
+    method mostrarCopitosDecorativos() {
+        copitosDecorativos.forEach({ copito =>
+            if (!game.hasVisual(copito)) {
+                game.addVisual(copito)
+            }
+        })
+        self.mantenerBarrasAdelante()
+    }
+
+    method ocultarCopitosDecorativos() {
+        copitosDecorativos.forEach({ copito =>
+            if (game.hasVisual(copito)) {
+                game.removeVisual(copito)
+            }
+        })
     }
 
     method arrancarTicks() {
         nevando = true
+        self.mostrarCopitosDecorativos()
         game.onTick(tiempoGeneracion, "generarNieve", {
             self.generarCopo()
         })
@@ -126,12 +162,28 @@ object gestorClima {
         const nuevoCopo = new NieveToxica(position = game.at(xAleatorio, yTecho)) 
         game.addVisual(nuevoCopo)
         coposEnPantalla.add(nuevoCopo)
+        // Solo reordenamos las barras si el copo nació en la zona derecha donde están las barras
+        if (xAleatorio >= 10) {
+            self.mantenerBarrasAdelante()
+        }
+    }
+
+    method mantenerBarrasAdelante() {
+        if (game.hasVisual(barraOxigeno)) {
+            game.removeVisual(barraOxigeno)
+            game.addVisual(barraOxigeno)
+        }
+        if (game.hasVisual(barraVelocidad)) {
+            game.removeVisual(barraVelocidad)
+            game.addVisual(barraVelocidad)
+        }
     }
 
     method actualizarCaidaDeCopos() {
         const coposAEliminar = coposEnPantalla.filter({ copo => copo.llegoAlSubte() })
         coposAEliminar.forEach({ copo => self.eliminarCopo(copo) })
         coposEnPantalla.forEach({ copo => copo.caer() })
+        copitosDecorativos.forEach({ copito => copito.caer() })
     }
 
     method eliminarCopo(unCopo) {
@@ -141,16 +193,18 @@ object gestorClima {
         coposEnPantalla.remove(unCopo)
     }
 
-    method cambiarDificultad(nuevoTiempoGen, nuevoTiempoCaida) {
+    method cambiarDificultad(nuevoTiempoGen, nuevoTiempoCaida, conMovimientoHorizontal) {
         self.frenarNevada()
         tiempoGeneracion = nuevoTiempoGen
         tiempoCaida = nuevoTiempoCaida
+        movimientoHorizontalActivo = conMovimientoHorizontal
         self.arrancarTicks()
     }
     
     method frenarNevada() {
         if (nevando) {
             coposEnPantalla.copy().forEach({ copo => self.eliminarCopo(copo) })
+            self.ocultarCopitosDecorativos()
             game.removeTickEvent("generarNieve")
             game.removeTickEvent("caidaDeNieve")
             nevando = false

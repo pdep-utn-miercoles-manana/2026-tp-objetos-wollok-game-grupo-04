@@ -457,7 +457,36 @@
 {"level":"info","message":"⌛ Building environment","timeElapsed":173,"timestamp":"2026-10-28T15:15:31.135Z"}
 {"level":"info","message":"🚀 Program executed \u001b[3m\u001b[34msrc.elMichinauta.michinautaGame\u001b[39m\u001b[23m on \u001b[3m\u001b[34mc:\\Users\\Victoria\\Documents\\Universidad\\PdP\\2026-tp-objetos-wollok-game-grupo-04\u001b[39m\u001b[23m","ok":true,"timeElapsed":414,"timestamp":"2026-10-28T15:17:38.345Z"}
 {"exitCode":"SIGHUP","level":"info","message":"👾 Game executed src.elMichinauta.michinautaGame on c:\\Users\\Victoria\\Documents\\Universidad\\PdP\\2026-tp-objetos-wollok-game-grupo-04","timeElapsed":674684,"timestamp":"2026-10-28T15:28:52.622Z"}
-{"level":"info","message":"⌛ Building environment","timeElapsed":169,"timestamp":"2026-11-01T20:54:02.508Z"}
+{"leve{"exitCode":"SIGHUP","level":"info","message":"👾 Game executed src.elMichinauta.michinautaGame on c:\\Users\\Victoria\\Documents\\Universidad\\PdP\\2026-tp-objetos-wollok-game-grupo-04","timeElapsed":857377,"timestamp":"2026-11-02T01:13:29.451Z"}
+{"level":"info","message":"🚀 Program executed \u001b[3m\u001b[34msrc.elMichinauta.michinautaGame\u001b[39m\u001b[23m on \u001b[3m\u001b[34mc:\\Users\\Victoria\\Documents\\Universidad\\PdP\\2026-tp-objetos-wollok-game-grupo-04\u001b[39m\u001b[23m","ok":true,"timeElapsed":777,"timestamp":"2026-11-02T01:13:33.551Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":203,"timestamp":"2026-11-02T01:18:53.494Z"}
+{"level":"info","message":"⌛ Validating src/gatoSalvito.wlk","timeElapsed":134,"timestamp":"2026-11-02T01:18:53.702Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":175,"timestamp":"2026-11-02T01:19:02.619Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":148,"timestamp":"2026-11-02T01:19:02.768Z"}
+{"level":"info","message":"⌛ Validating src/gatoSalvito.wlk","timeElapsed":117,"timestamp":"2026-11-02T01:19:02.885Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":108,"timestamp":"2026-11-02T01:19:03.957Z"}
+{"level":"info","message":"⌛ Validating src/gatoSalvito.wlk","timeElapsed":131,"timestamp":"2026-11-02T01:19:04.094Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":194,"timestamp":"2026-11-02T01:19:28.189Z"}
+{"level":"info","message":"⌛ Validating src/gatoSalvito.wlk","timeElapsed":110,"timestamp":"2026-11-02T01:19:28.317Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":220,"timestamp":"2026-11-02T01:20:32.454Z"}
+{"level":"info","message":"⌛ Validating src/elementos.wlk","timeElapsed":199,"timestamp":"2026-11-02T01:20:32.670Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":119,"timestamp":"2026-11-02T01:20:38.249Z"}
+{"level":"info","message":"⌛ Validating src/elementos.wlk","timeElapsed":105,"timestamp":"2026-11-02T01:20:38.362Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":245,"timestamp":"2026-11-02T01:21:11.989Z"}
+{"level":"info","message":"⌛ Validating src/gestores.wlk","timeElapsed":177,"timestamp":"2026-11-02T01:21:12.193Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":183,"timestamp":"2026-11-02T01:21:17.101Z"}
+{"level":"info","message":"⌛ Validating src/gestores.wlk","timeElapsed":125,"timestamp":"2026-11-02T01:21:17.298Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":206,"timestamp":"2026-11-02T01:21:51.590Z"}
+{"level":"info","message":"⌛ Validating src/niveles.wlk","timeElapsed":201,"timestamp":"2026-11-02T01:21:51.859Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":188,"timestamp":"2026-11-02T01:21:59.715Z"}
+{"level":"info","message":"⌛ Validating src/niveles.wlk","timeElapsed":101,"timestamp":"2026-11-02T01:21:59.891Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":112,"timestamp":"2026-11-02T01:22:22.543Z"}
+{"level":"info","message":"⌛ Validating src/elMichinauta.wpgm","timeElapsed":106,"timestamp":"2026-11-02T01:22:22.658Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":164,"timestamp":"2026-11-02T01:22:54.758Z"}
+{"level":"info","message":"⌛ Validating test/pruebasMichinauta.wtest","timeElapsed":105,"timestamp":"2026-11-02T01:22:54.931Z"}
+{"exitCode":"SIGHUP","level":"info","message":"👾 Game executed src.elMichinauta.michinautaGame on c:\\Users\\Victoria\\Documents\\Universidad\\PdP\\2026-tp-objetos-wollok-game-grupo-04","timeElapsed":574456,"timestamp":"2026-11-02T01:23:07.229Z"}
+{"level":"info","message":"🚀 Program executed \u001b[3m\u001b[34msrc.elMichinauta.michinautaGame\u001b[39m\u001b[23m on \u001b[3m\u001b[34mc:\\Users\\Victoria\\Documents\\Universidad\\PdP\\2026-tp-objetos-wollok-game-grupo-04\u001b[39m\u001b[23m","ok":true,"timeElapsed":602,"timestamp":"2026-11-02T01:23:10.826Z"}
+l":"info","message":"⌛ Building environment","timeElapsed":169,"timestamp":"2026-11-01T20:54:02.508Z"}
 {"level":"info","message":"⌛ Building environment","timeElapsed":150,"timestamp":"2026-11-01T20:54:02.662Z"}
 {"level":"info","message":"⌛ Validating src/elMichinauta.wpgm","timeElapsed":265,"timestamp":"2026-11-01T20:54:02.951Z"}
 {"level":"info","message":"⌛ Building environment","timeElapsed":211,"timestamp":"2026-11-01T20:54:03.164Z"}
@@ -497,3 +526,9 @@
 {"level":"info","message":"🚀 Program executed \u001b[3m\u001b[34msrc.elMichinauta.michinautaGame\u001b[39m\u001b[23m on \u001b[3m\u001b[34mc:\\Users\\Victoria\\Documents\\Universidad\\PdP\\2026-tp-objetos-wollok-game-grupo-04\u001b[39m\u001b[23m","ok":true,"timeElapsed":584,"timestamp":"2026-11-02T00:48:58.619Z"}
 {"exitCode":"SIGHUP","level":"info","message":"👾 Game executed src.elMichinauta.michinautaGame on c:\\Users\\Victoria\\Documents\\Universidad\\PdP\\2026-tp-objetos-wollok-game-grupo-04","timeElapsed":611173,"timestamp":"2026-11-02T00:59:09.206Z"}
 {"level":"info","message":"🚀 Program executed \u001b[3m\u001b[34msrc.elMichinauta.michinautaGame\u001b[39m\u001b[23m on \u001b[3m\u001b[34mc:\\Users\\Victoria\\Documents\\Universidad\\PdP\\2026-tp-objetos-wollok-game-grupo-04\u001b[39m\u001b[23m","ok":true,"timeElapsed":552,"timestamp":"2026-11-02T00:59:12.624Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":135,"timestamp":"2026-11-02T01:27:15.828Z"}
+{"level":"info","message":"⌛ Validating src/elementos.wlk","timeElapsed":187,"timestamp":"2026-11-02T01:27:16.067Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":175,"timestamp":"2026-11-02T01:27:41.737Z"}
+{"level":"info","message":"⌛ Validating src/gestores.wlk","timeElapsed":132,"timestamp":"2026-11-02T01:27:41.942Z"}
+{"exitCode":"SIGHUP","level":"info","message":"👾 Game executed src.elMichinauta.michinautaGame on c:\\Users\\Victoria\\Documents\\Universidad\\PdP\\2026-tp-objetos-wollok-game-grupo-04","timeElapsed":330169,"timestamp":"2026-11-02T01:28:40.392Z"}
+{"level":"info","message":"🚀 Program executed \u001b[3m\u001b[34msrc.elMichinauta.michinautaGame\u001b[39m\u001b[23m on \u001b[3m\u001b[34mc:\\Users\\Victoria\\Documents\\Universidad\\PdP\\2026-tp-objetos-wollok-game-grupo-04\u001b[39m\u001b[23m","ok":true,"timeElapsed":589,"timestamp":"2026-11-02T01:28:43.844Z"}

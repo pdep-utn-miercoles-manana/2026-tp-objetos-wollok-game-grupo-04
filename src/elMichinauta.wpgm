@@ -21,19 +21,20 @@ object logicaJuego {
     method iniciarPartida() {
         // 1. Fondo y barras de estado gráficas
         game.addVisual(fondo)
+        game.addVisual(salvito)
         game.addVisual(barraOxigeno)
         game.addVisual(barraVelocidad)
-        game.addVisual(salvito)
 
         // 2. Inicia el nivel 1 y activa el ciclo de oxígeno.
         gestorDeNivel.iniciarJuego()
 
-        // 3. Controles de movimiento y tecla R para reintentar al perder/ganar.
+        // 3. Controles de movimiento, R para reiniciar el nivel perdido y V para volver a empezar al ganar.
         keyboard.up().onPressDo({ salvito.intentarMover({ salvito.moverArriba() }) })
         keyboard.down().onPressDo({ salvito.intentarMover({ salvito.moverAbajo() }) })
         keyboard.left().onPressDo({ salvito.intentarMover({ salvito.moverIzquierda() }) })
         keyboard.right().onPressDo({ salvito.intentarMover({ salvito.moverDerecha() }) })
-        keyboard.r().onPressDo({ gestorDeNivel.intentarReiniciar() })
+        keyboard.r().onPressDo({ gestorDeNivel.intentarReiniciarNivel() })
+        keyboard.v().onPressDo({ gestorDeNivel.intentarVolverAEmpezar() })
 
         // 4. Polimorfismo en colisiones con cualquier elemento del tablero.
         game.onCollideDo(salvito, { elemento => elemento.afectarA(salvito) })
