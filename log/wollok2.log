@@ -648,3 +648,4 @@ l":"info","message":"⌛ Building environment","timeElapsed":169,"timestamp":"20
 {"level":"info","message":"⌛ Building environment","timeElapsed":152,"timestamp":"2026-11-04T03:23:57.410Z"}
 {"level":"info","message":"⌛ Building environment","timeElapsed":107,"timestamp":"2026-11-04T03:24:20.272Z"}
 {"exitCode":"SIGHUP","level":"info","message":"👾 Game executed src.elMichinauta.michinautaGame on c:\\Users\\Victoria\\Documents\\Universidad\\PdP\\2026-tp-objetos-wollok-game-grupo-04","timeElapsed":542728,"timestamp":"2026-11-04T03:26:03.534Z"}
+{"level":"info","message":"🚀 Program executed \u001b[3m\u001b[34msrc.elMichinauta.michinautaGame\u001b[39m\u001b[23m on \u001b[3m\u001b[34mc:\\Users\\Victoria\\Documents\\Universidad\\PdP\\2026-tp-objetos-wollok-game-grupo-04\u001b[39m\u001b[23m","ok":true,"timeElapsed":352,"timestamp":"2026-11-04T03:26:05.407Z"}
