@@ -4,8 +4,43 @@ import gatoSalvito.*
 import niveles.*
 import visualesPantalla.*
 
+object gestorMusica {
+    var sonidoActual = null
+    var sonando = false
+
+    method iniciarMusicaIntro() {
+        self.reproducirEnLoop("musica_intro.mp3")
+    }
+
+    method iniciarMusicaNevada() {
+        self.reproducirEnLoop("musica_nevada.mp3")
+    }
+
+    method reproducirEnLoop(nombreArchivo) {
+        self.frenarMusica()
+        sonidoActual = game.sound(nombreArchivo)
+        sonidoActual.shouldLoop(true)
+        sonidoActual.volume(0.25)
+        sonidoActual.play()
+        sonando = true
+    }
+
+    method frenarMusica() {
+        if (sonando and sonidoActual != null) {
+            sonidoActual.stop()
+            sonando = false
+            sonidoActual = null
+        }
+    }
+}
+
 object gestorDeNivel {
-    const nivelesDeJuego = [nivelUno, nivelDos, nivelTres] 
+    const nivelesDeJuego = [nivelUno, nivelDos, nivelTres]
+    const imagenesSecuenciaFinal = [
+        "final_0_radio.png",
+        "final_1_salvito.png",
+        "final_2_darin.png"
+    ]
     var indice = 0 
     var piezasRecolectadas = 0
     var cicloOxigenoActivo = false
@@ -14,6 +49,8 @@ object gestorDeNivel {
     var esperandoReinicioJuego = false
     var enDialogo = false
     var enTransicion = false
+    var enSecuenciaFinal = false
+    var etapaFinal = 0
 
     method nivelActual() = nivelesDeJuego.get(indice) 
 
@@ -23,8 +60,36 @@ object gestorDeNivel {
         esperandoReinicioJuego = false
         enDialogo = false
         enTransicion = false
+        enSecuenciaFinal = false
+        etapaFinal = 0
+        self.mostrarElementosDePartida()
         self.iniciarCicloOxigeno()
         self.nivelActual().cargarNivel()
+        gestorMusica.iniciarMusicaNevada()
+    }
+
+    method mostrarElementosDePartida() {
+        if (!game.hasVisual(salvito)) {
+            game.addVisual(salvito)
+        }
+        if (!game.hasVisual(barraOxigeno)) {
+            game.addVisual(barraOxigeno)
+        }
+        if (!game.hasVisual(barraVelocidad)) {
+            game.addVisual(barraVelocidad)
+        }
+    }
+
+    method ocultarElementosDePartida() {
+        if (game.hasVisual(salvito)) {
+            game.removeVisual(salvito)
+        }
+        if (game.hasVisual(barraOxigeno)) {
+            game.removeVisual(barraOxigeno)
+        }
+        if (game.hasVisual(barraVelocidad)) {
+            game.removeVisual(barraVelocidad)
+        }
     }
 
     method iniciarCicloOxigeno() {
@@ -75,7 +140,7 @@ object gestorDeNivel {
             piezasRecolectadas += 1
             self.mostrarDialogo(nombreImagen)
         } else {
-            // Modo test unitario (sin bloqueo de teclado)
+            // Modo test unitario (sin bloqueo de teclado ni audio)
             self.recolectarPieza()
         }
     }
@@ -87,7 +152,7 @@ object gestorDeNivel {
         }
     }
 
-    // Acción de la tecla X para cerrar diálogos de objetos y pantallas de transición
+    // Acción de la tecla X (o ENTER) para cerrar diálogos y avanzar transiciones
     method continuarConX() {
         if (enDialogo) {
             if (game.hasVisual(pantallaDialogo)) {
@@ -106,12 +171,18 @@ object gestorDeNivel {
             enTransicion = false
             self.nivelActual().cargarNivel()
             self.iniciarCicloOxigeno()
+            gestorMusica.iniciarMusicaNevada()
+        } else if (enSecuenciaFinal) {
+            self.avanzarSecuenciaFinal()
         }
     }
 
     method iniciarTransicionNivel() {
         self.nivelActual().limpiarElementos()
         gestorClima.frenarNevada()
+        if (partidaEnCurso) {
+            gestorMusica.frenarMusica()
+        }
         piezasRecolectadas = 0
         indice += 1
         if (self.hayMasNiveles()) {
@@ -121,6 +192,33 @@ object gestorDeNivel {
             }
             enTransicion = true
         } else {
+            self.iniciarSecuenciaFinal()
+        }
+    }
+
+    method iniciarSecuenciaFinal() {
+        self.frenarCicloOxigeno()
+        gestorClima.frenarNevada()
+        salvito.detener()
+        self.ocultarElementosDePartida()
+        fondo.image("refugio.png")
+        enSecuenciaFinal = true
+        etapaFinal = 0
+        pantallaTransicion.image(imagenesSecuenciaFinal.get(etapaFinal))
+        if (!game.hasVisual(pantallaTransicion)) {
+            game.addVisual(pantallaTransicion)
+        }
+    }
+
+    method avanzarSecuenciaFinal() {
+        etapaFinal += 1
+        if (etapaFinal < imagenesSecuenciaFinal.size()) {
+            pantallaTransicion.image(imagenesSecuenciaFinal.get(etapaFinal))
+        } else {
+            if (game.hasVisual(pantallaTransicion)) {
+                game.removeVisual(pantallaTransicion)
+            }
+            enSecuenciaFinal = false
             self.ganarJuego()
         }
     }
@@ -144,18 +242,22 @@ object gestorDeNivel {
         fondo.image("refugio.png")
         self.frenarCicloOxigeno()
         gestorClima.frenarNevada()
+        if (partidaEnCurso) {
+            gestorMusica.frenarMusica()
+        }
         salvito.detener()
-        game.schedule(4000, {
-            if (!game.hasVisual(pantallaGanaste)) {
-                game.addVisual(pantallaGanaste)
-            }
-            esperandoReinicioJuego = true
-        })
+        if (!game.hasVisual(pantallaGanaste)) {
+            game.addVisual(pantallaGanaste)
+        }
+        esperandoReinicioJuego = true
     }
 
     method perderJuego() {
         self.frenarCicloOxigeno()
         gestorClima.frenarNevada()
+        if (partidaEnCurso) {
+            gestorMusica.frenarMusica()
+        }
         self.nivelActual().limpiarElementos()
         salvito.detener()
         if (!game.hasVisual(pantallaGameOver)) {
@@ -303,14 +405,10 @@ object gestorClima {
         self.arrancarTicks()
     }
     
+    // Limpia SIEMPRE los copos y copitos en pantalla, incluso si ya estaba pausada por un diálogo
     method frenarNevada() {
-        if (nevando) {
-            coposEnPantalla.copy().forEach({ copo => self.eliminarCopo(copo) })
-            self.ocultarCopitosDecorativos()
-            game.removeTickEvent("generarNieve")
-            game.removeTickEvent("caidaDeNieve")
-            game.removeTickEvent("caidaDeCopitos")
-            nevando = false
-        }
+        self.pausarNevada()
+        coposEnPantalla.copy().forEach({ copo => self.eliminarCopo(copo) })
+        self.ocultarCopitosDecorativos()
     }
 }
