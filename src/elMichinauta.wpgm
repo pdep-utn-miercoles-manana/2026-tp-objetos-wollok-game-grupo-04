@@ -28,11 +28,12 @@ object logicaJuego {
         // 2. Inicia el nivel 1 y activa el ciclo de oxígeno.
         gestorDeNivel.iniciarJuego()
 
-        // 3. Controles de movimiento, R para reiniciar el nivel perdido y V para volver a empezar al ganar.
+        // 3. Controles de movimiento, X para continuar diálogos/transiciones, R para reiniciar nivel y V para volver a empezar.
         keyboard.up().onPressDo({ salvito.intentarMover({ salvito.moverArriba() }) })
         keyboard.down().onPressDo({ salvito.intentarMover({ salvito.moverAbajo() }) })
         keyboard.left().onPressDo({ salvito.intentarMover({ salvito.moverIzquierda() }) })
         keyboard.right().onPressDo({ salvito.intentarMover({ salvito.moverDerecha() }) })
+        keyboard.x().onPressDo({ gestorDeNivel.continuarConX() })
         keyboard.r().onPressDo({ gestorDeNivel.intentarReiniciarNivel() })
         keyboard.v().onPressDo({ gestorDeNivel.intentarVolverAEmpezar() })
 

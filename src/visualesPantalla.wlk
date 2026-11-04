@@ -38,7 +38,7 @@ object barraVelocidad {
     method image() = "velocidad_" + self.nivelVisual().toString() + ".png"
 }
 
-// --- PANTALLAS DE FLUJO E INSTRUCCIONES ---
+// --- PANTALLAS DE FLUJO, DIÁLOGOS OTOME Y TRANSICIONES ---
 object pantallaDeTitulo {
     method position() = game.origin() 
     method image() = "titulo.png"
@@ -47,6 +47,11 @@ object pantallaDeTitulo {
 object pantallaInstrucciones {
     method position() = game.origin()
     method image() = "instrucciones.png"
+}
+
+object pantallaDialogo {
+    var property image = "dialogo_atun.png"
+    method position() = game.origin()
 }
 
 object pantallaTransicion {

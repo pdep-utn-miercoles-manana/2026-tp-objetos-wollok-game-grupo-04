@@ -8,14 +8,16 @@ class ElementoDeSuperficie {
     method image()
 
     method afectarA(unMichinauta) {
-        self.aplicarEfectoA(unMichinauta)
         self.desaparecer()
+        self.aplicarEfectoA(unMichinauta)
     }
 
     method aplicarEfectoA(unMichinauta)
 
     method desaparecer() {
-        game.removeVisual(self)
+        if (game.hasVisual(self)) {
+            game.removeVisual(self)
+        }
     }
 
     method cambiarPosicionAleatoria() {
@@ -66,7 +68,7 @@ class CopoMiniatura inherits CopoDeNieve {
 
     override method aplicarEfectoA(unMichinauta) {}
 
-    // En lugar de destruir y crear objetos nuevos (que da lag), cuando llega abajo vuelve arriba
+    // Cuando llega abajo vuelve arriba sin crear ni destruir objetos
     override method caer() {
         if (self.llegoAlSubte()) {
             const xAleatorio = 0.randomUpTo(game.width()).truncate(0)
@@ -82,18 +84,20 @@ class LataAtun inherits ElementoDeSuperficie {
 
     override method aplicarEfectoA(unMichinauta) {
         unMichinauta.recuperarVelocidad()
+        gestorDeNivel.mostrarDialogo("dialogo_atun.png")
     }
 }
 
 class PiezaDeLore inherits ElementoDeSuperficie {
     const image
     const nombreDeLaPieza
+    const imagenDialogo = "dialogo_" + image
 
     override method image() = image
+    method nombreDeLaPieza() = nombreDeLaPieza
 
     override method aplicarEfectoA(unMichinauta) {
-        game.say(unMichinauta, "Encontré: ¡" + nombreDeLaPieza + "! :O")
-        gestorDeNivel.recolectarPieza()
+        gestorDeNivel.recolectarPiezaConDialogo(imagenDialogo)
     }
 }
 

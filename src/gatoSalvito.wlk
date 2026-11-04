@@ -102,7 +102,6 @@ object salvito {
 
     method verificarSignosVitales() {
         if (!self.estaVivo()) {
-            game.say(self, "No puedo... respirar...")
             gestorDeNivel.perderJuego()
         }
     }
@@ -123,6 +122,10 @@ object salvito {
 
     method detener() {
         puedeMoverse = false
+    }
+
+    method habilitarMovimiento() {
+        puedeMoverse = true
     }
 
     method reiniciar() {

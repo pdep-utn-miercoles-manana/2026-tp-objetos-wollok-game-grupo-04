@@ -9,14 +9,20 @@ object gestorDeNivel {
     var indice = 0 
     var piezasRecolectadas = 0
     var cicloOxigenoActivo = false
+    var property partidaEnCurso = false
     var esperandoReinicioNivel = false
     var esperandoReinicioJuego = false
+    var enDialogo = false
+    var enTransicion = false
 
     method nivelActual() = nivelesDeJuego.get(indice) 
 
     method iniciarJuego() {
+        partidaEnCurso = true
         esperandoReinicioNivel = false
         esperandoReinicioJuego = false
+        enDialogo = false
+        enTransicion = false
         self.iniciarCicloOxigeno()
         self.nivelActual().cargarNivel()
     }
@@ -37,10 +43,85 @@ object gestorDeNivel {
         }
     }
 
+    // Pausa todos los relojes y el movimiento mientras se lee una pantalla
+    method pausarPartida() {
+        salvito.detener()
+        self.frenarCicloOxigeno()
+        gestorClima.pausarNevada()
+        self.nivelActual().frenarReubicacionElementos()
+    }
+
+    // Reanuda todos los relojes cuando se cierra un diálogo en medio del nivel
+    method reanudarPartida() {
+        salvito.habilitarMovimiento()
+        self.iniciarCicloOxigeno()
+        gestorClima.reanudarNevada()
+        self.nivelActual().iniciarReubicacionElementos()
+    }
+
+    method mostrarDialogo(nombreImagen) {
+        if (partidaEnCurso) {
+            self.pausarPartida()
+            pantallaDialogo.image(nombreImagen)
+            if (!game.hasVisual(pantallaDialogo)) {
+                game.addVisual(pantallaDialogo)
+            }
+            enDialogo = true
+        }
+    }
+
+    method recolectarPiezaConDialogo(nombreImagen) {
+        if (partidaEnCurso) {
+            piezasRecolectadas += 1
+            self.mostrarDialogo(nombreImagen)
+        } else {
+            // Modo test unitario (sin bloqueo de teclado)
+            self.recolectarPieza()
+        }
+    }
+
     method recolectarPieza() {
         piezasRecolectadas += 1
         if (self.completoPiezasDelNivel()) {
             self.pasarASiguienteNivel()
+        }
+    }
+
+    // Acción de la tecla X para cerrar diálogos de objetos y pantallas de transición
+    method continuarConX() {
+        if (enDialogo) {
+            if (game.hasVisual(pantallaDialogo)) {
+                game.removeVisual(pantallaDialogo)
+            }
+            enDialogo = false
+            if (self.completoPiezasDelNivel()) {
+                self.iniciarTransicionNivel()
+            } else {
+                self.reanudarPartida()
+            }
+        } else if (enTransicion) {
+            if (game.hasVisual(pantallaTransicion)) {
+                game.removeVisual(pantallaTransicion)
+            }
+            enTransicion = false
+            self.nivelActual().cargarNivel()
+            self.iniciarCicloOxigeno()
+        }
+    }
+
+    method iniciarTransicionNivel() {
+        self.nivelActual().limpiarElementos()
+        gestorClima.frenarNevada()
+        piezasRecolectadas = 0
+        indice += 1
+        if (self.hayMasNiveles()) {
+            pantallaTransicion.image(self.nivelActual().imagenTransicionEntrada())
+            if (!game.hasVisual(pantallaTransicion)) {
+                game.addVisual(pantallaTransicion)
+            }
+            enTransicion = true
+        } else {
+            self.ganarJuego()
         }
     }
 
@@ -64,7 +145,6 @@ object gestorDeNivel {
         self.frenarCicloOxigeno()
         gestorClima.frenarNevada()
         salvito.detener()
-        game.say(salvito, "¡Llegué al refugio! Creo que escucho humanos hablando...")
         game.schedule(4000, {
             if (!game.hasVisual(pantallaGanaste)) {
                 game.addVisual(pantallaGanaste)
@@ -120,6 +200,8 @@ object gestorClima {
     ]
     var tiempoGeneracion = 1500
     var tiempoCaida = 300
+    // Velocidad SIEMPRE constante para copito.png en todos los niveles
+    const tiempoCaidaCopito = 300
     var nevando = false
     var property movimientoHorizontalActivo = false
 
@@ -154,6 +236,24 @@ object gestorClima {
         game.onTick(tiempoCaida, "caidaDeNieve", {
             self.actualizarCaidaDeCopos()
         })
+        game.onTick(tiempoCaidaCopito, "caidaDeCopitos", {
+            self.actualizarCaidaDeCopitos()
+        })
+    }
+
+    method pausarNevada() {
+        if (nevando) {
+            game.removeTickEvent("generarNieve")
+            game.removeTickEvent("caidaDeNieve")
+            game.removeTickEvent("caidaDeCopitos")
+            nevando = false
+        }
+    }
+
+    method reanudarNevada() {
+        if (!nevando) {
+            self.arrancarTicks()
+        }
     }
 
     method generarCopo() {
@@ -162,7 +262,6 @@ object gestorClima {
         const nuevoCopo = new NieveToxica(position = game.at(xAleatorio, yTecho)) 
         game.addVisual(nuevoCopo)
         coposEnPantalla.add(nuevoCopo)
-        // Solo reordenamos las barras si el copo nació en la zona derecha donde están las barras
         if (xAleatorio >= 10) {
             self.mantenerBarrasAdelante()
         }
@@ -183,6 +282,9 @@ object gestorClima {
         const coposAEliminar = coposEnPantalla.filter({ copo => copo.llegoAlSubte() })
         coposAEliminar.forEach({ copo => self.eliminarCopo(copo) })
         coposEnPantalla.forEach({ copo => copo.caer() })
+    }
+
+    method actualizarCaidaDeCopitos() {
         copitosDecorativos.forEach({ copito => copito.caer() })
     }
 
@@ -207,6 +309,7 @@ object gestorClima {
             self.ocultarCopitosDecorativos()
             game.removeTickEvent("generarNieve")
             game.removeTickEvent("caidaDeNieve")
+            game.removeTickEvent("caidaDeCopitos")
             nevando = false
         }
     }
